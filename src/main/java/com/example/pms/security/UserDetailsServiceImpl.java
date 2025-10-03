@@ -1,0 +1,2 @@
+package com.example.pms.security; import com.example.pms.model.User; import com.example.pms.repository.UserRepository; import org.springframework.stereotype.Service;
+@Service public class UserDetailsServiceImpl { private final UserRepository userRepository; public UserDetailsServiceImpl(UserRepository userRepository){ this.userRepository=userRepository; } public UserDetailsImpl loadUserByUsername(String username){ User user = userRepository.findByUsername(username).orElseThrow(); return new UserDetailsImpl(user); } }

@@ -1,0 +1,3 @@
+package com.example.pms.model; import jakarta.persistence.*; import lombok.*; import java.time.LocalDate;
+@Entity @Table(name="tasks") @Data @NoArgsConstructor @AllArgsConstructor
+public class Task { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; private String title; private String description; @Enumerated(EnumType.STRING) private TaskStatus status = TaskStatus.TODO; private int priority = 3; private LocalDate dueDate; @ManyToOne @JoinColumn(name="project_id") private Project project; @ManyToOne @JoinColumn(name="user_id") private User assignee; }

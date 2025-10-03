@@ -1,0 +1,52 @@
+{
+  "info": {
+    "name": "Project Management System API",
+    "_postman_id": "1234-5678-91011",
+    "description": "Postman collection for testing Project Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/api/auth/signup", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "auth", "signup"] },
+        "body": { "mode": "raw", "raw": "{\n  \"username\":\"alice\",\n  \"email\":\"alice@example.com\",\n  \"password\":\"password\"\n}" }
+      }
+    },
+    {
+      "name": "Signin",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": { "raw": "http://localhost:8080/api/auth/signin", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "auth", "signin"] },
+        "body": { "mode": "raw", "raw": "{\n  \"username\":\"alice\",\n  \"password\":\"password\"\n}" }
+      }
+    },
+    {
+      "name": "Create Project",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "http://localhost:8080/api/projects", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "projects"] },
+        "body": { "mode": "raw", "raw": "{\n  \"title\":\"Resume Project\",\n  \"description\":\"Spring Boot demo\",\n  \"deadline\":\"2025-12-31\"\n}" }
+      }
+    },
+    {
+      "name": "Create Task",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": { "raw": "http://localhost:8080/api/projects/1/tasks/assign/1", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "projects", "1", "tasks", "assign", "1"] },
+        "body": { "mode": "raw", "raw": "{\n  \"title\":\"Build Resume\",\n  \"description\":\"Prepare Overleaf Resume for BeeHyv\",\n  \"priority\":1,\n  \"dueDate\":\"2025-10-10\"\n}" }
+      }
+    }
+  ]
+}

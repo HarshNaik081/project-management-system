@@ -1,0 +1,1 @@
+package com.example.pms.model; public enum TaskStatus { TODO, IN_PROGRESS, DONE }
